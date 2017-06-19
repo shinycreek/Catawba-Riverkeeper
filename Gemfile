@@ -20,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -33,8 +33,11 @@ gem 'jbuilder', '~> 2.5'
 #Flexible authentication solution for Rails with Warden.
 gem 'devise', '~> 4.3'
 #An administration framework
-
 gem 'activeadmin', '~> 1.0'
+#Rack Middleware for handling Cross-Origin Resource Sharing (CORS), which makes cross-origin AJAX possible.
+gem 'rack-cors', :require => 'rack/cors'
+# URL Validation for Rails
+gem "validate_url"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
