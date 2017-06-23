@@ -10,6 +10,12 @@ Rails.application.routes.draw do
           get 'crf'
         end
       end
+      resources :user_settings, only: [] do
+        collection do
+          post 'show'
+          post 'setting'
+        end
+      end
     end
   end
 
