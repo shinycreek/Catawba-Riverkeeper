@@ -3,4 +3,5 @@ en:
     not_found: "record not found"
     updated: "record was updated successfully"
     not_update: "record could not update successfully"
-
+    created: "record was created successfully"
+    not_create: "record could not create successfully"

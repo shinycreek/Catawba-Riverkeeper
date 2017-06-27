@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  
+
   namespace :api do
     namespace :v1 do
       resources :websites, only: [] do
@@ -10,10 +10,10 @@ Rails.application.routes.draw do
           get 'crf'
         end
       end
-      resources :user_settings, only: [] do
+      resources :user_settings, only: [:create] do
         collection do
           post 'show'
-          post 'setting'
+          put 'update'
         end
       end
     end
