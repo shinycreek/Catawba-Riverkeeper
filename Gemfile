@@ -38,6 +38,10 @@ gem 'activeadmin', '~> 1.0'
 gem 'rack-cors', :require => 'rack/cors'
 # URL Validation for Rails
 gem "validate_url"
+# Classier solution for file uploads for Rails, Sinatra and other Ruby web frameworks 
+gem 'carrierwave', '~> 1.0'
+# Upload files encoded as base64 to carrierwave
+gem 'carrierwave-base64'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
