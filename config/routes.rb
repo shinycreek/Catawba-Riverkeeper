@@ -16,6 +16,7 @@ Rails.application.routes.draw do
           put 'update'
         end
       end
+      resources :trash_loggers, only: [:create]
     end
   end
 

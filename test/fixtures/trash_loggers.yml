@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  describe_trash: MyText
+  describe_location: MyText
+  adjacent_waterway: MyText
+  email: MyString
+  phone: MyString
+  lat: MyString
+  lng: MyString
+
+two:
+  describe_trash: MyText
+  describe_location: MyText
+  adjacent_waterway: MyText
+  email: MyString
+  phone: MyString
+  lat: MyString
+  lng: MyString
