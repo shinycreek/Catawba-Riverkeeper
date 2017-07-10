@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703135939) do
+ActiveRecord::Schema.define(version: 20170710152014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,12 +46,15 @@ ActiveRecord::Schema.define(version: 20170703135939) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "trash_logger_images", force: :cascade do |t|
-    t.bigint "trash_logger_id"
-    t.string "image"
+  create_table "pollution_reports", force: :cascade do |t|
+    t.text "describe_pollution"
+    t.text "describe_location"
+    t.text "adjacent_area"
+    t.string "phone_id"
+    t.string "latitude"
+    t.string "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trash_logger_id"], name: "index_trash_logger_images_on_trash_logger_id"
   end
 
   create_table "trash_loggers", force: :cascade do |t|
@@ -61,6 +64,14 @@ ActiveRecord::Schema.define(version: 20170703135939) do
     t.string "phone_id"
     t.string "latitude"
     t.string "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "upload_images", force: :cascade do |t|
+    t.string "image"
+    t.integer "imageable_id"
+    t.string "imageable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -106,5 +117,4 @@ ActiveRecord::Schema.define(version: 20170703135939) do
     t.string "website_type"
   end
 
-  add_foreign_key "trash_logger_images", "trash_loggers"
 end

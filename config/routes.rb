@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         end
       end
       resources :trash_loggers, only: [:create]
+      resources :pollution_reports, only: [:create]
     end
   end
 
