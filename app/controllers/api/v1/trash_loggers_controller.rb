@@ -12,7 +12,7 @@ class Api::V1::TrashLoggersController < ApplicationController
   private
   
   def trash_logger_params
-    params.require(:trash_logger).permit(:describe_trash, :describe_location, :adjacent_waterway, :phone_id, :latitude, :longitude, trash_logger_images_attributes: [:image])
+    params.require(:trash_logger).permit(:describe_trash, :describe_location, :adjacent_waterway, :phone_id, :latitude, :longitude, upload_images_attributes: [:image])
   end
 
 end
