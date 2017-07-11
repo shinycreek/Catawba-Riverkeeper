@@ -1,0 +1,2 @@
+class AuthorityContact < ApplicationRecord
+end
