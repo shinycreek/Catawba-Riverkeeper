@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       end
       resources :trash_loggers, only: [:create]
       resources :pollution_reports, only: [:create]
+      resources :lake_levels, only: [:index]      
     end
   end
 
