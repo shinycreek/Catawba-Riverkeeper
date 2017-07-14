@@ -1,8 +1,30 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@example.com', password: '123456789', password_confirmation: '123456789')
+AdminUser.where(email: 'admin@example.com').first_or_create do |user|
+  user.password = '123456789'
+  user.password_confirmation = '123456789'
+end
+
+#Temp creating Dam record. 
+#Need to remove once 3rd party API intergrated
+Dam.destroy_all
+
+["Bridgewater", "Oxford", "Wylie", "Wateree"].each do |dam_name|
+  dam = Dam.new(name: dam_name)
+  if dam.save
+    3.times do |i|
+      WaterRelease.create(dam_id: dam.id, start_at: Time.now - (i+2).days, stop_at: Time.now - (i+1).days)
+    end
+  else
+    puts "#{dam_name} Dam could not create!"
+  end
+
+  ["Watermill", "Catawba Intake", "Morganton Greenway", "Watermill Road Access Area"].each do |flow_arrival_location_name|
+    flow_arrival_location = FlowArrivalLocation.new(dam_id: dam.id, name: flow_arrival_location_name)
+    if flow_arrival_location.save
+      3.times do |i|
+        FlowArrivalRecession.create(flow_arrival_location_id: flow_arrival_location.id, arrival_time: Time.now - (i+2).days, recedes_time: Time.now - (i+1).days)
+      end
+    else
+      puts "#{flow_arrival_location_name} FlowArrivalLocation could not create!"
+    end
+  end
+end
