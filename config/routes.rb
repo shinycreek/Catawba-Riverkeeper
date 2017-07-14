@@ -20,6 +20,11 @@ Rails.application.routes.draw do
       resources :pollution_reports, only: [:create]
       resources :authority_contacts, only: [:index]      
       resources :lake_levels, only: [:index]      
+      resources :recreational_releases, only: [:index] do
+        member do
+          get 'flow_arrival_locations'
+        end
+      end
     end
   end
 
