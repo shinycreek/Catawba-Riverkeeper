@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20170712080628) do
 
-ActiveRecord::Schema.define(version: 20170711102552) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,29 @@ ActiveRecord::Schema.define(version: 20170711102552) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "dams", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "flow_arrival_locations", force: :cascade do |t|
+    t.bigint "dam_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dam_id"], name: "index_flow_arrival_locations_on_dam_id"
+  end
+
+  create_table "flow_arrival_recessions", force: :cascade do |t|
+    t.bigint "flow_arrival_location_id"
+    t.datetime "arrival_time"
+    t.datetime "recedes_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["flow_arrival_location_id"], name: "index_flow_arrival_recessions_on_flow_arrival_location_id"
   end
 
   create_table "lake_levels", force: :cascade do |t|
@@ -125,6 +148,15 @@ ActiveRecord::Schema.define(version: 20170711102552) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "water_releases", force: :cascade do |t|
+    t.bigint "dam_id"
+    t.datetime "start_at"
+    t.datetime "stop_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dam_id"], name: "index_water_releases_on_dam_id"
   end
 
   create_table "websites", force: :cascade do |t|
