@@ -28,3 +28,10 @@ Dam.destroy_all
     end
   end
 end
+
+LakeLevel.destroy_all
+
+lake_level_names = ['Lake James', 'Lake Rhodhiss', 'Lake Dearbborn', 'Lake Hickory', 'Lake Norman', 'Lake Wylie']
+lake_level_names.each do |lake_name|
+  LakeLevel.create(lake_name: lake_name, level: rand(10.0..100).round(2), target: rand(10.0..100).round(2))
+end
