@@ -1,4 +1,4 @@
-class DamReleaseAPIService
+class DamReleasesAPIService
 
   def initialize
     # flow/1 is the Catawba River

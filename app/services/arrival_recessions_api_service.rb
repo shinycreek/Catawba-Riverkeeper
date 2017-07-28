@@ -1,4 +1,4 @@
-class ArrivalRecessionAPIService
+class ArrivalRecessionsAPIService
 
   def initialize
     # recession/1 is the Catawba River
