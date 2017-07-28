@@ -3,12 +3,14 @@
 # Table name: lake_levels
 #
 #  id         :integer          not null, primary key
-#  lake_name  :string
 #  level      :float
 #  target     :float
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  lake_id    :integer
 #
 
 class LakeLevel < ApplicationRecord
+  belongs_to :lake
+  validates :lake_id, presence: true
 end
