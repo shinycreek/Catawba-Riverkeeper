@@ -13,4 +13,5 @@
 class LakeLevel < ApplicationRecord
   belongs_to :lake
   validates :lake_id, presence: true
+  delegate :name, to: :lake, prefix: true
 end
