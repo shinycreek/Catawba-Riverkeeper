@@ -1,6 +1,7 @@
-class CatawbaReleaseAPIService
+class DamReleaseAPIService
 
   def initialize
+    # flow/1 is the Catawba River
     response = Faraday.get('https://lakes.duke-energy.com/Data/flow/1.txt')
     @dams_data_array = JSON.parse(response.body)
   end
