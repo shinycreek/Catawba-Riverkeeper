@@ -34,5 +34,5 @@ Lake.destroy_all
 lake_level_names = ['Lake James', 'Lake Rhodhiss', 'Lake Dearbborn', 'Lake Hickory', 'Lake Norman', 'Lake Wylie']
 lake_level_names.each do |lake_name|
   lake = Lake.create(name: lake_name)
-  lake.lake_levels.create(level: rand(10.0..100).round(2), target: rand(10.0..100).round(2))
+  lake.lake_levels.create(level: rand(10.0..100).round(2), target: rand(10.0..100).round(2), date_recorded: Date.today)
 end

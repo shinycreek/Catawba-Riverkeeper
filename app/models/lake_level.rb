@@ -2,12 +2,13 @@
 #
 # Table name: lake_levels
 #
-#  id         :integer          not null, primary key
-#  level      :float
-#  target     :float
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  lake_id    :integer
+#  id            :integer          not null, primary key
+#  level         :float
+#  target        :float
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  lake_id       :integer
+#  date_recorded :date
 #
 
 class LakeLevel < ApplicationRecord
