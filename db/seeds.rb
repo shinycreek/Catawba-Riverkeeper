@@ -3,7 +3,7 @@ AdminUser.where(email: 'admin@example.com').first_or_create do |user|
   user.password_confirmation = '123456789'
 end
 
-#Temp creating Dam record. 
+#Temp creating Dam record.
 #Need to remove once 3rd party API intergrated
 Dam.destroy_all
 
@@ -29,9 +29,10 @@ Dam.destroy_all
   end
 end
 
-LakeLevel.destroy_all
+Lake.destroy_all
 
 lake_level_names = ['Lake James', 'Lake Rhodhiss', 'Lake Dearbborn', 'Lake Hickory', 'Lake Norman', 'Lake Wylie']
 lake_level_names.each do |lake_name|
-  LakeLevel.create(lake_name: lake_name, level: rand(10.0..100).round(2), target: rand(10.0..100).round(2))
+  lake = Lake.create(name: lake_name)
+  lake.lake_levels.create(level: rand(10.0..100).round(2), target: rand(10.0..100).round(2))
 end

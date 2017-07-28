@@ -9,5 +9,5 @@
 #
 
 class Lake < ApplicationRecord
-  has_many :lake_levels
+  has_many :lake_levels, dependent: :destroy
 end
