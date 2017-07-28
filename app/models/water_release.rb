@@ -16,4 +16,5 @@
 
 class WaterRelease < ApplicationRecord
   belongs_to :dam
+  validates :dam_id, :start_at, :stop_at, presence: true
 end

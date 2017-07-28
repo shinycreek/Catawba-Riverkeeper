@@ -13,7 +13,7 @@
 
 class LakeLevel < ApplicationRecord
   belongs_to :lake
-  validates :lake_id, presence: true
+  validates :lake_id, :level, :target, :date_recorded, presence: true
   delegate :name, to: :lake, prefix: true
 
   scope :by_date_recorded, -> { order(:date_recorded) }

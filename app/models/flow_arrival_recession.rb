@@ -16,5 +16,5 @@
 
 class FlowArrivalRecession < ApplicationRecord
   belongs_to :flow_arrival_location
-  validates :flow_arrival_location_id, presence: true
+  validates :flow_arrival_location_id, :arrival_time, :recedes_time, presence: true
 end
