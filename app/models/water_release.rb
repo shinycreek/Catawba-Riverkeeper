@@ -19,5 +19,6 @@
 
 class WaterRelease < ApplicationRecord
   belongs_to :dam
-  validates :dam_id, :date, :generation, presence: true
+  validates :dam_id, :date, presence: true
+  validates :generation, :inclusion => [true, false]
 end

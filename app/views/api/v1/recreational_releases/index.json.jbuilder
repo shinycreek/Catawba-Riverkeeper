@@ -1,7 +1,7 @@
 json.dams @dams do |dam|
   json.id dam.id
   json.name dam.name
-  json.water_releases dam.water_releases.order(:created_at).last(3) do |wr|
+  json.water_releases dam.water_releases.order(:date).last(3) do |wr|
     json.date wr.date.strftime("%b %e")
     json.generation wr.generation
     if wr.generation
