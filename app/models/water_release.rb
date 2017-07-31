@@ -8,6 +8,9 @@
 #  stop_at    :datetime
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  date       :date
+#  generation :boolean          default(FALSE), not null
+#  units      :integer
 #
 # Indexes
 #
@@ -16,5 +19,5 @@
 
 class WaterRelease < ApplicationRecord
   belongs_to :dam
-  validates :dam_id, :start_at, :stop_at, presence: true
+  validates :dam_id, :date, :generation, presence: true
 end

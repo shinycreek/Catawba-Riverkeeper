@@ -10,9 +10,21 @@ Dam.destroy_all
 ["Bridgewater", "Oxford", "Wylie", "Wateree"].each do |dam_name|
   dam = Dam.new(name: dam_name)
   if dam.save
-    3.times do |i|
-      WaterRelease.create(dam_id: dam.id, start_at: Time.now - (i+2).days, stop_at: Time.now - (i+1).days)
+    2.times do |i|
+      WaterRelease.create(
+      dam_id: dam.id,
+      date: Date.today - (i+2).days,
+      start_at: Time.now - (i+2).days,
+      stop_at: Time.now - (i+1).days,
+      units: rand(1..2),
+      generation: true
+    )
     end
+    WaterRelease.create(
+      dam_id: dam.id,
+      date: Date.today - 4.days,
+      generation: false
+    )
   else
     puts "#{dam_name} Dam could not create!"
   end
