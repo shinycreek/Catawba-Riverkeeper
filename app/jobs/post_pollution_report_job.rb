@@ -2,7 +2,7 @@ class PostPollutionReportJob < ApplicationJob
 
   def perform(pollution_report_id)
     logger.info "Starting PostPollutionReportJob.perform"
-    pollution_report = PollutionReport.where(id: pollution_report_id).first
+    pollution_report = PollutionReport.find(pollution_report_id)
     if pollution_report.present?
       json = generate_json(pollution_report)
       object_id = send_create_post(json)
