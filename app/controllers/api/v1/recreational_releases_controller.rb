@@ -1,6 +1,7 @@
 class Api::V1::RecreationalReleasesController < ApplicationController
 
   def index
+    # releases are ordered and scoped in jbuilder view
     @dams = Dam.all.includes(:water_releases)
   end
 

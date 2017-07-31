@@ -14,7 +14,7 @@ class ArrivalRecessionsAPIService
 
   def create_locations_and_arrival_reccessions_for_dams(dams_data_array)
     dams_data_array.map do |dam_data|
-      dam_record = Dam.where(name: dam_data["DamName"]).first_or_create
+      dam_record = Dam.where(name: dam_data["DamName"]).first_or_create!
       create_locations_and_arrival_reccessions_for_dam(dam_record, dam_data)
     end
   end
@@ -40,7 +40,7 @@ class ArrivalRecessionsAPIService
   def create_arrival_location(dam_record, location_data_array)
     dam_record.flow_arrival_locations.where(
       name: get_location_name(location_data_array)
-    ).first_or_create
+    ).first_or_create!
   end
 
   def get_location_name(location_data_array)
@@ -59,6 +59,6 @@ class ArrivalRecessionsAPIService
     location_record.flow_arrival_recessions.where(
       arrival_time: DateTime.parse(location_data["Arrival"]),
       recedes_time: DateTime.parse(location_data["Recedes"])
-    ).first_or_create
+    ).first_or_create!
   end
 end
