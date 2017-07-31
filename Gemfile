@@ -44,8 +44,6 @@ gem "validate_url"
 gem 'carrierwave', '~> 1.0'
 # Upload files encoded as base64 to carrierwave
 gem 'carrierwave-base64'
-# for POST of pollution report API and API calls for lake levels
-gem 'faraday', '~> 0.12.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
