@@ -2,7 +2,7 @@ class PostTrashLoggerJob < ApplicationJob
 
   def perform(trash_logger_id)
     logger.info "Starting PostTrashLogJob.perform"
-    trash_logger = TrashLogger.find(trash_logger_id)
+    trash_logger = TrashLogger.where(id: trash_logger_id).first
     if trash_logger.present?
       json = generate_json(trash_logger)
       object_id = send_create_post(json)
@@ -37,7 +37,7 @@ class PostTrashLoggerJob < ApplicationJob
         "LoggerPhone": user.try(:phone),
         "Status": "Unreviewed",
         "CRFNotes": nil,
-        "LoggerName": user.try(:first_name)+" "+user.try(:last_name)
+        "LoggerName": "#{user.try(:first_name)} #{user.try(:last_name)}"
       }
     }
   ]

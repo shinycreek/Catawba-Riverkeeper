@@ -2,7 +2,7 @@ class PostPollutionReportJob < ApplicationJob
 
   def perform(pollution_report_id)
     logger.info "Starting PostPollutionReportJob.perform"
-    pollution_report = PollutionReport.find(pollution_report_id)
+    pollution_report = PollutionReport.where(id: pollution_report_id).first
     if pollution_report.present?
       json = generate_json(pollution_report)
       object_id = send_create_post(json)
@@ -32,7 +32,7 @@ class PostPollutionReportJob < ApplicationJob
         "OtherInfo": "other information",
         "PollutionAddress": "Pollution address",
         "PublicView": "No",
-        "ReporterName": user.try(:first_name)+" "+user.try(:last_name),
+        "ReporterName": "#{user.try(:first_name)} #{user.try(:last_name)}",
         "ReporterEmail": user.try(:email),
         "ReporterPhone": user.try(:phone),
         "ReporterAddress": user.try(:address),
