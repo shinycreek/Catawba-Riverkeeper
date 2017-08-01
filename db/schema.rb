@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721100302) do
+ActiveRecord::Schema.define(version: 20170731142655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,9 +79,16 @@ ActiveRecord::Schema.define(version: 20170721100302) do
   end
 
   create_table "lake_levels", force: :cascade do |t|
-    t.string "lake_name"
     t.float "level"
     t.float "target"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "lake_id"
+    t.date "date_recorded"
+  end
+
+  create_table "lakes", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -157,6 +164,9 @@ ActiveRecord::Schema.define(version: 20170721100302) do
     t.datetime "stop_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
+    t.boolean "generation", default: false, null: false
+    t.integer "units"
     t.index ["dam_id"], name: "index_water_releases_on_dam_id"
   end
 
