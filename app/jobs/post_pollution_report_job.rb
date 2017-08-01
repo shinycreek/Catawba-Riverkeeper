@@ -32,7 +32,7 @@ class PostPollutionReportJob < ApplicationJob
         "OtherInfo": "other information",
         "PollutionAddress": "Pollution address",
         "PublicView": "No",
-        "ReporterName": user.try(:first_name)+" "+user.try(:last_name),
+        "ReporterName": "#{user.try(:first_name)} #{user.try(:last_name)}",
         "ReporterEmail": user.try(:email),
         "ReporterPhone": user.try(:phone),
         "ReporterAddress": user.try(:address),
