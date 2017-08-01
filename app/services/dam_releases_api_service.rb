@@ -40,7 +40,7 @@ class DamReleasesAPIService
       generation: true,
       start_at: DateTime.strptime(release_data["StartDateTime"], '%m/%d/%Y %I:%M:%S %p'),
       stop_at: DateTime.strptime(release_data["EndDateTime"], '%m/%d/%Y %I:%M:%S %p'),
-      units: release_data["units"] == "2 Unit" ? 2 : 1
+      units: release_data["Units"] == "2 Unit" ? 2 : 1
     )
   end
 
@@ -48,7 +48,8 @@ class DamReleasesAPIService
     dam_record.water_releases.where(
       date: DateTime.strptime(release_data["StartDateTime"], '%m/%d/%Y %I:%M:%S %p').to_date
     ).first_or_create!(
-      generation: false
+      generation: false,
+      units: 0
     )
   end
 end
