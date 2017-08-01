@@ -8,6 +8,7 @@
 #  recedes_time             :datetime
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
+#  date                     :date
 #
 # Indexes
 #
@@ -16,5 +17,5 @@
 
 class FlowArrivalRecession < ApplicationRecord
   belongs_to :flow_arrival_location
-  validates :flow_arrival_location_id, :arrival_time, :recedes_time, presence: true
+  validates :flow_arrival_location_id, :arrival_time, :recedes_time, :date, presence: true
 end

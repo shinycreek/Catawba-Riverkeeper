@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731142655) do
+ActiveRecord::Schema.define(version: 20170801161055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20170731142655) do
     t.datetime "recedes_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
     t.index ["flow_arrival_location_id"], name: "index_flow_arrival_recessions_on_flow_arrival_location_id"
   end
 
