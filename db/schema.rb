@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801161055) do
+ActiveRecord::Schema.define(version: 20170803105126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,10 @@ ActiveRecord::Schema.define(version: 20170801161055) do
     t.string "pollution_duration"
     t.string "waterway_affected"
     t.datetime "pollution_observed_at"
+    t.string "county"
+    t.string "address"
+    t.string "responsible_party"
+    t.string "other_information"
   end
 
   create_table "trash_loggers", force: :cascade do |t|
