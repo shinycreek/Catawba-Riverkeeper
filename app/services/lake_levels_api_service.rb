@@ -19,9 +19,10 @@ class LakeLevelsAPIService
   end
 
   def create_lake_levels(lake, lake_data)
-    lake.lake_levels.where(
+    lake_level = lake.lake_levels.where(
       date_recorded: Date.strptime(lake_data["Date"], '%m/%d/%Y')
-    ).first_or_create!(
+    ).first_or_create
+    lake_level.update(
       level: lake_data["Actual"],
       target: lake_data["Target"],
     )

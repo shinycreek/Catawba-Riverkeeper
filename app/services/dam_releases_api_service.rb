@@ -34,9 +34,10 @@ class DamReleasesAPIService
   end
 
   def create_generation(dam_record, release_data)
-    dam_record.water_releases.where(
+    water_release = dam_record.water_releases.where(
       date: DateTime.strptime(release_data["StartDateTime"], '%m/%d/%Y %I:%M:%S %p').to_date
-    ).first_or_create!(
+    ).first_or_create
+    water_release.update(
       generation: true,
       start_at: DateTime.strptime(release_data["StartDateTime"], '%m/%d/%Y %I:%M:%S %p'),
       stop_at: DateTime.strptime(release_data["EndDateTime"], '%m/%d/%Y %I:%M:%S %p'),
@@ -45,9 +46,10 @@ class DamReleasesAPIService
   end
 
   def create_no_generation(dam_record, release_data)
-    dam_record.water_releases.where(
+    water_release = dam_record.water_releases.where(
       date: DateTime.strptime(release_data["StartDateTime"], '%m/%d/%Y %I:%M:%S %p').to_date
-    ).first_or_create!(
+    ).first_or_create
+    water_release.update(
       generation: false,
       units: 0
     )
