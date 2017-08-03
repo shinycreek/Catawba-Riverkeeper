@@ -23,7 +23,8 @@ Dam.destroy_all
     WaterRelease.create!(
       dam_id: dam.id,
       date: Date.today - 4.days,
-      generation: false
+      generation: false,
+      units: 0
     )
     5.times do |i|
       WaterRelease.create!(
@@ -43,7 +44,12 @@ Dam.destroy_all
     flow_arrival_location = FlowArrivalLocation.new(dam_id: dam.id, name: flow_arrival_location_name)
     if flow_arrival_location.save
       3.times do |i|
-        FlowArrivalRecession.create!(flow_arrival_location_id: flow_arrival_location.id, arrival_time: Time.now - (i+2).days, recedes_time: Time.now - (i+1).days)
+        FlowArrivalRecession.create!(
+          flow_arrival_location_id: flow_arrival_location.id,
+          date: Date.today - (i+2.days), 
+          arrival_time: Time.now - (i+2).days,
+          recedes_time: Time.now - (i+1).days
+        )
       end
     else
       puts "#{flow_arrival_location_name} FlowArrivalLocation could not create!!"
