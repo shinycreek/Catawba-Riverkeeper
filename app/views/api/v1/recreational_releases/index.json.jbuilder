@@ -1,7 +1,7 @@
 json.dams @dams do |dam|
   json.id dam.id
   json.name dam.name
-  json.water_releases dam.water_releases.where("date >= ?", Date.today).order(:date) do |wr|
+  json.water_releases dam.water_releases.today_and_future do |wr|
     json.date wr.date.strftime("%b %e")
     json.generation wr.generation
     if wr.generation

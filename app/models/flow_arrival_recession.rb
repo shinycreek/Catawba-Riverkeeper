@@ -18,4 +18,6 @@
 class FlowArrivalRecession < ApplicationRecord
   belongs_to :flow_arrival_location
   validates :flow_arrival_location_id, :arrival_time, :recedes_time, :date, presence: true
+
+  scope :today_and_future, -> { where("date >= ?", Date.today).order(:arrival_time) }
 end
