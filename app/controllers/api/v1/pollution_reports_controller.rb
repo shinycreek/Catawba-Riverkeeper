@@ -15,7 +15,7 @@ class Api::V1::PollutionReportsController < ApplicationController
   private
 
   def pollution_report_params
-    params.require(:pollution_report).permit(:pollution_observed_at, :describe_pollution, :waterway_affected, :pollution_duration, :phone_id, :latitude, :longitude, upload_images_attributes: [:image])
+    params.require(:pollution_report).permit(:pollution_observed_at, :describe_pollution, :waterway_affected, :pollution_duration, :phone_id, :latitude, :longitude, :county, :address, :responsible_party, :other_information, upload_images_attributes: [:image])
   end
 
 end
