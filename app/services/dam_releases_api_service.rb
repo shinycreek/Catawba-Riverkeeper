@@ -1,6 +1,8 @@
 class DamReleasesAPIService
 
   def initialize
+    # service was written to allow for updating existing records, but due to the
+    # instability of the api, destroy_all is called in job.
     # flow/1 is the Catawba River
     response = Faraday.get('https://lakes.duke-energy.com/Data/flow/1.txt')
     @dams_data_array = JSON.parse(response.body)
