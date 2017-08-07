@@ -36,7 +36,7 @@ class PostPollutionReportJob < ApplicationJob
         "ReporterEmail": user.try(:email),
         "ReporterPhone": user.try(:phone),
         "ReporterAddress": user.try(:address),
-        "PollutionCounty": user.try(:country),
+        "PollutionCounty": pollution_report.county,
         "MDYDate": (pollution_report.created_at.to_i)*1000,
         "PollutionDuration": pollution_report.pollution_duration,
         "PollutionWaterway": pollution_report.waterway_affected,

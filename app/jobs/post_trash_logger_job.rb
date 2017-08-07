@@ -31,7 +31,7 @@ class PostTrashLoggerJob < ApplicationJob
       "attributes":{
         "TrashDescription": trash_logger.describe_trash,
         "TrashLocationExtent": trash_logger.describe_location,
-        "TrashCounty": user.try(:country),
+        "TrashCounty": trash_logger.county,
         "Waterway": trash_logger.adjacent_waterway,
         "LoggerEmail": user.try(:email),
         "LoggerPhone": user.try(:phone),
