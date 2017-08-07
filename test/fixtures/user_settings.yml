@@ -7,7 +7,6 @@
 #  last_name  :string
 #  email      :string
 #  phone      :string
-#  country    :string
 #  address    :string
 #  city       :string
 #  state      :string(2)
@@ -24,7 +23,6 @@ one:
   last_name: MyString
   email: MyString
   phone: MyString
-  country: MyString
   address: MyString
   city: MyString
   state: MyString
@@ -36,7 +34,6 @@ two:
   last_name: MyString
   email: MyString
   phone: MyString
-  country: MyString
   address: MyString
   city: MyString
   state: MyString

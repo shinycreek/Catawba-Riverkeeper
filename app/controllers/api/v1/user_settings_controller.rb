@@ -26,7 +26,7 @@ class Api::V1::UserSettingsController < ApplicationController
   private
 
   def user_setting_params
-    params.require(:user_setting).permit(:first_name, :last_name, :email, :phone, :country, :address, :city, :state, :zip, :phone_id)
+    params.require(:user_setting).permit(:first_name, :last_name, :email, :phone, :address, :city, :state, :zip, :phone_id)
   end
 
 end

@@ -12,6 +12,10 @@
 #  pollution_duration    :string
 #  waterway_affected     :string
 #  pollution_observed_at :datetime
+#  other_info            :string
+#  pollution_address     :string
+#  responsible_party     :string
+#  county                :string
 #
 
 class PollutionReport < ApplicationRecord
