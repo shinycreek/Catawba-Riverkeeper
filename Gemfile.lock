@@ -88,6 +88,9 @@ GEM
     capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capistrano-sidekiq (0.10.0)
+      capistrano
+      sidekiq (>= 3.4)
     capybara (2.14.0)
       addressable
       mime-types (>= 1.16)
@@ -113,6 +116,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.1)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -120,6 +124,8 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.6.0)
+    et-orbi (1.0.5)
+      tzinfo
     execjs (2.7.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
@@ -132,6 +138,7 @@ GEM
     has_scope (0.7.1)
       actionpack (>= 4.1, < 5.2)
       activesupport (>= 4.1, < 5.2)
+    honeybadger (3.1.2)
     i18n (0.8.1)
     inherited_resources (1.7.2)
       actionpack (>= 3.2, < 5.2.x)
@@ -195,6 +202,8 @@ GEM
     puma (3.8.2)
     rack (2.0.3)
     rack-cors (0.4.1)
+    rack-protection (2.0.0)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.1.1)
@@ -230,11 +239,14 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    redis (3.3.3)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
+    rufus-scheduler (3.4.2)
+      et-orbi (~> 1.0)
     sass (3.4.24)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -246,6 +258,16 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
+    sidekiq (5.0.4)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (~> 3.3, >= 3.3.3)
+    sidekiq-scheduler (2.1.8)
+      redis (~> 3)
+      rufus-scheduler (~> 3.2)
+      sidekiq (>= 3)
+      tilt (>= 1.4.0)
     slop (3.6.0)
     spring (2.0.2)
       activesupport (>= 4.2)
@@ -299,11 +321,13 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rails-collection
   capistrano-rvm
+  capistrano-sidekiq
   capybara (~> 2.13)
   carrierwave (~> 1.0)
   carrierwave-base64
   devise (~> 4.3)
   faraday (~> 0.12.2)
+  honeybadger (~> 3.1.2)
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)
@@ -313,6 +337,8 @@ DEPENDENCIES
   rails (~> 5.1.1)
   sass-rails (~> 5.0)
   selenium-webdriver
+  sidekiq (~> 5.0.4)
+  sidekiq-scheduler (~> 2.1.8)
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data

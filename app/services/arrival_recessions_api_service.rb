@@ -16,16 +16,25 @@ class ArrivalRecessionsAPIService
 
   def create_locations_and_arrival_reccessions_for_dams(dams_data_array)
     dams_data_array.map do |dam_data|
-      dam_record = Dam.where(name: dam_data["DamName"]).first_or_create!
-      create_locations_and_arrival_reccessions_for_dam(dam_record, dam_data)
+      begin
+        dam_record = Dam.where(name: dam_data["DamName"]).first_or_create!
+        create_locations_and_arrival_reccessions_for_dam(dam_record, dam_data)
+      rescue ActiveRecord::RecordInvalid => e
+        Honeybadger.notify(e)
+      end
     end
   end
 
   def create_locations_and_arrival_reccessions_for_dam(dam_record, dam_data)
     dam_data["FlowArrivalRecessions"].inject("") do |last_location_name, location_data|
-      location_record = create_arrival_location(dam_record, location_data, last_location_name)
-      create_arrival_reccession(location_record, location_data)
-      !location_record.nil? ? location_record.name : last_location_name
+      begin
+        location_record = create_arrival_location(dam_record, location_data, last_location_name)
+        create_arrival_reccession(location_record, location_data)
+        location_record.name
+      rescue ActiveRecord::RecordInvalid => e
+        Honeybadger.notify(e)
+        last_location_name
+      end
     end
   end
 

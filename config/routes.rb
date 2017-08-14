@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  root to: 'admin/dashboard#index'
+
+  require 'sidekiq/web'
+  require 'sidekiq-scheduler/web'
+  authenticate :admin_user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   namespace :api do
     namespace :v1 do
@@ -18,8 +25,8 @@ Rails.application.routes.draw do
       end
       resources :trash_loggers, only: [:create]
       resources :pollution_reports, only: [:create]
-      resources :authority_contacts, only: [:index]      
-      resources :lake_levels, only: [:index]      
+      resources :authority_contacts, only: [:index]
+      resources :lake_levels, only: [:index]
       resources :recreational_releases, only: [:index] do
         member do
           get 'flow_arrival_locations'

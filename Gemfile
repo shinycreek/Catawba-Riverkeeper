@@ -45,6 +45,10 @@ gem 'carrierwave', '~> 1.0'
 # Upload files encoded as base64 to carrierwave
 gem 'carrierwave-base64'
 
+gem 'honeybadger', '~> 3.1.2'
+gem 'sidekiq', '~> 5.0.4'
+gem 'sidekiq-scheduler', '~> 2.1.8'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'
@@ -69,6 +73,7 @@ group :development do
   gem 'capistrano-passenger'
   gem 'capistrano-faster-assets'
   gem 'capistrano-rails-collection'
+  gem 'capistrano-sidekiq'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

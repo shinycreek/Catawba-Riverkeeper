@@ -1,4 +1,5 @@
 class PostPollutionReportJob < ApplicationJob
+  queue_as :default
 
   def perform(pollution_report_id)
     logger.info "Starting PostPollutionReportJob.perform"
