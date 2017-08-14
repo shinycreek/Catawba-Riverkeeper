@@ -19,7 +19,7 @@ class LakeLevelsAPIService
         lake = Lake.where(name: lake_data["LakeDisplayName"]).first_or_create!
         create_lake_levels(lake, lake_data)
       rescue ActiveRecord::RecordInvalid => e
-        Rails.logger.info e
+        Honeybadger.notify(e)
       end
     end
   end

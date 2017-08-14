@@ -20,7 +20,7 @@ class DamReleasesAPIService
         dam_record = Dam.where(name: dam_data["RiverName"]).first_or_create!
         create_water_releases(dam_record, dam_data["Releases"])
       rescue ActiveRecord::RecordInvalid => e
-        Rails.logger.info e
+        Honeybadger.notify(e)
       end
     end
   end
@@ -30,7 +30,7 @@ class DamReleasesAPIService
       begin
         create_water_release(dam_record, release_data)
       rescue ActiveRecord::RecordInvalid => e
-        Rails.logger.info e
+        Honeybadger.notify(e)
       end
     end
   end

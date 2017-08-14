@@ -45,6 +45,8 @@ gem 'carrierwave', '~> 1.0'
 # Upload files encoded as base64 to carrierwave
 gem 'carrierwave-base64'
 
+gem 'honeybadger', '~> 3.1.2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-rails'

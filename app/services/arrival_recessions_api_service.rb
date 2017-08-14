@@ -6,6 +6,7 @@ class ArrivalRecessionsAPIService
     # recession/1 is the Catawba River
     response = Faraday.get('https://lakes.duke-energy.com/Data/recession/1.txt')
     @dams_data_array = JSON.parse(response.body)
+    binding.pry
   end
 
   def call
@@ -20,7 +21,7 @@ class ArrivalRecessionsAPIService
         dam_record = Dam.where(name: dam_data["DamName"]).first_or_create!
         create_locations_and_arrival_reccessions_for_dam(dam_record, dam_data)
       rescue ActiveRecord::RecordInvalid => e
-        Rails.logger.info e
+        Honeybadger.notify(e)
       end
     end
   end
@@ -32,7 +33,7 @@ class ArrivalRecessionsAPIService
         create_arrival_reccession(location_record, location_data)
         location_record.name
       rescue ActiveRecord::RecordInvalid => e
-        Rails.logger.info e
+        Honeybadger.notify(e)
         last_location_name
       end
     end
