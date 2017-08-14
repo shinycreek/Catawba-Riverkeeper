@@ -16,14 +16,22 @@ class DamReleasesAPIService
 
   def create_releases_for_dams(dams_data_array)
     dams_data_array.map do |dam_data|
-      dam_record = Dam.where(name: dam_data["RiverName"]).first_or_create!
-      create_water_releases(dam_record, dam_data["Releases"])
+      begin
+        dam_record = Dam.where(name: dam_data["RiverName"]).first_or_create!
+        create_water_releases(dam_record, dam_data["Releases"])
+      rescue ActiveRecord::RecordInvalid => e
+        Rails.logger.info e
+      end
     end
   end
 
   def create_water_releases(dam_record, releases_array)
     releases_array.map do |release_data|
-      create_water_release(dam_record, release_data)
+      begin
+        create_water_release(dam_record, release_data)
+      rescue ActiveRecord::RecordInvalid => e
+        Rails.logger.info e
+      end
     end
   end
 
