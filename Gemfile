@@ -46,6 +46,8 @@ gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-base64'
 
 gem 'honeybadger', '~> 3.1.2'
+gem 'sidekiq', '~> 5.0.4'
+gem 'sidekiq-scheduler', '~> 2.1.8'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

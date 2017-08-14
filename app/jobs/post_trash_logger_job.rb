@@ -1,4 +1,5 @@
 class PostTrashLoggerJob < ApplicationJob
+  queue_as :default
 
   def perform(trash_logger_id)
     logger.info "Starting PostTrashLogJob.perform"

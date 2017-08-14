@@ -1,0 +1,3 @@
+:schedule:
+  DukeAPIJob:
+    every: ["5m"]

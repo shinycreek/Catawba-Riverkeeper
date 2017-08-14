@@ -6,7 +6,6 @@ class ArrivalRecessionsAPIService
     # recession/1 is the Catawba River
     response = Faraday.get('https://lakes.duke-energy.com/Data/recession/1.txt')
     @dams_data_array = JSON.parse(response.body)
-    binding.pry
   end
 
   def call
