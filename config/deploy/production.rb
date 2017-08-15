@@ -60,20 +60,20 @@ set :rvm_ruby_version, '2.3.4@catawba_riverkeeper'
 #   }
 
 
-# For capistrano 3
-namespace :sidekiq do
-  task :quiet do
-    on roles(:app) do
-      puts capture("pgrep -f 'sidekiq' | xargs kill -TSTP")
-    end
-  end
-  task :restart do
-    on roles(:app) do
-      execute :sudo, :systemctl, :restart, :sidekiq
-    end
-  end
-end
-
-after 'deploy:starting', 'sidekiq:quiet'
-after 'deploy:reverted', 'sidekiq:restart'
-after 'deploy:published', 'sidekiq:restart'
+# # For capistrano 3
+# namespace :sidekiq do
+#   task :quiet do
+#     on roles(:app) do
+#       puts capture("pgrep -f 'sidekiq' | xargs kill -TSTP")
+#     end
+#   end
+#   task :restart do
+#     on roles(:app) do
+#       execute :sudo, :systemctl, :restart, :sidekiq
+#     end
+#   end
+# end
+#
+# after 'deploy:starting', 'sidekiq:quiet'
+# after 'deploy:reverted', 'sidekiq:restart'
+# after 'deploy:published', 'sidekiq:restart'
