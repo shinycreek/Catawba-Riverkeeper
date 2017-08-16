@@ -21,8 +21,6 @@ server '13.59.206.82', user: 'deploy', roles: %w{app db web}
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
-
-
 # Configuration
 # =============
 # You can set any configuration variable like in config/deploy.rb
@@ -44,7 +42,7 @@ set :rvm_ruby_version, '2.3.4@catawba_riverkeeper'
 # Global options
 # --------------
  set :ssh_options, {
-   keys: %w(/home/rails/rails_work/brett/react-rails/catawba_riverkeeper_prod.pem),
+   keys: %w(~/.ssh/catawba_riverkeeper_prod.pem),
    forward_agent: false
  }
 #
@@ -60,3 +58,22 @@ set :rvm_ruby_version, '2.3.4@catawba_riverkeeper'
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+
+# # For capistrano 3
+# namespace :sidekiq do
+#   task :quiet do
+#     on roles(:app) do
+#       puts capture("pgrep -f 'sidekiq' | xargs kill -TSTP")
+#     end
+#   end
+#   task :restart do
+#     on roles(:app) do
+#       execute :sudo, :systemctl, :restart, :sidekiq
+#     end
+#   end
+# end
+#
+# after 'deploy:starting', 'sidekiq:quiet'
+# after 'deploy:reverted', 'sidekiq:restart'
+# after 'deploy:published', 'sidekiq:restart'
