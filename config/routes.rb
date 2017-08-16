@@ -8,9 +8,7 @@ Rails.application.routes.draw do
         collection do
           get 'basin_map'
           get 'crf'
-          get 'facebook_page'
-          get 'instagram_page'
-          get 'twitter_page'
+          get 'follow_us'
         end
       end
       resources :user_settings, only: [:create] do

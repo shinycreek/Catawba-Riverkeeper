@@ -9,4 +9,6 @@ class Website < ApplicationRecord
 
   validates :url, presence: true, :url => true
   validates :website_type, uniqueness: true
+
+  scope :by_website_type,->(type) { where(website_type: type.to_s.to_sym) }
 end
