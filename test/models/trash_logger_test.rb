@@ -12,6 +12,8 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  county            :string
+#  status            :string           default("active")
+#  date_observed     :datetime
 #
 
 require 'test_helper'
