@@ -1,5 +1,5 @@
 namespace :duke_api_service do
-  desc "TODO"
+  desc "duke_api_service"
   task update_db_from_api: :environment do
     DukeAPIJob.perform_now
   end
