@@ -16,6 +16,7 @@
 #  pollution_address     :string
 #  responsible_party     :string
 #  county                :string
+#  status                :string           default("active")
 #
 
 class PollutionReport < ApplicationRecord
@@ -24,7 +25,7 @@ class PollutionReport < ApplicationRecord
   accepts_nested_attributes_for :upload_images
 
   #after_save :send_to_arcgis
-
+  enum status: { :archived => "archived", :active => "active" }
   private
 
   def send_to_arcgis
